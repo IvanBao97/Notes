@@ -98,10 +98,23 @@ MySQL的最上层是连接服务，引入了线程池的概念，允许多台客
 <img src="https://github.com/IvanBao97/Notes/blob/main/MySQL/NotePics/InnoDB%E5%BC%95%E6%93%8E%E7%BB%93%E6%9E%84.png" alt="image-InnoDBStructure" style="zoom:50%;" />
 
 #### 2.2.1 线程
-
+* Master Thread
+	* 核心后台线程，负责将缓冲池中的数据异步刷新到磁盘，保证数据的一致性（包扩了下面三个线程的全部功能）
+* IO Thread
+	* Write Theard 写线程
+	* Read Theard 读线程
+	* Insert buffer Theard
+	* Log Theard
+* Purge Thread
+	* 用来回收事务提交后，不再使用的 undo Log
+* Page Clearn Theard
+	* 将内存缓冲池里的脏页刷新到磁盘文件
 
 #### 2.2.2 内存
-
+* 缓冲池
+	* 作用：通过内存的速度来弥补磁盘速度较慢对数据库性能的影响
+	* 读流程：进行读取页操作时，首先判断该页是否在缓冲池中，若存在，则命中；不存在，则从磁盘读取，并将该页存放在缓冲池中
+	* 写流程：
 
 #### 2.2.3 文件
 
