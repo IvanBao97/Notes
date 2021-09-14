@@ -76,14 +76,14 @@ MySQL的最上层是连接服务，引入了线程池的概念，允许多台客
 
   * B+ Tree 索引文件和数据文件是分离的**（非聚集索引）**
 
-  <img src="https://github.com/IvanBao97/Notes/blob/main/MySQL/NotePics/MyISAM.png" style="zoom:50%;" />
+  <img src="https://github.com/IvanBao97/Notes/blob/main/MySQL/NotePics/MyISAM.png" alt="img" style="zoom:50%;" />
 
 * InnoBD
 
   * 表数据文件本身就是按 B+ Tree 组织的一个索引结构文件**（聚集索引）**
   * 叶节点包含了完整的数据记录
 
-  <img src="https://github.com/IvanBao97/Notes/blob/main/MySQL/NotePics/InnoDB.png" alt="image-20201015230408961" style="zoom:50%;" />
+  <img src="https://github.com/IvanBao97/Notes/blob/main/MySQL/NotePics/InnoDB.png" alt="img" style="zoom:50%;" />
 
   
 
