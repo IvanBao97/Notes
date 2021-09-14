@@ -94,6 +94,16 @@ MySQL的最上层是连接服务，引入了线程池的概念，允许多台客
     2. 使用整型是因为方便查找时索引比较，且占用空间小
     3. 自增可以保证，新增元素可以直接插在叶子节点的最右边，从而不改变其他部分结构，因为叶子节点的索引值，从左到右依次增加
 
+### 2.2 InnoDB 引擎结构
+<img src="https://github.com/IvanBao97/Notes/blob/main/MySQL/NotePics/InnoDB%E5%BC%95%E6%93%8E%E7%BB%93%E6%9E%84.png" alt="image-InnoDBStructure" style="zoom:50%;" />
+
+#### 2.2.1 线程
+
+
+#### 2.2.2 内存
+
+
+#### 2.2.3 文件
 
 
 <br>
