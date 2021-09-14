@@ -6,7 +6,7 @@
 
 ### 1.1 架构分层
 
-<img src="https://img-blog.csdn.net/20180831173911997?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3pfcnlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img" style="zoom: 67%;" />
+<img src="https://img-blog.csdn.net/20180831173911997?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3pfcnlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="image-MySQL架构" style="zoom: 67%;" />
 
 存储引擎架构分为三层，自上而下，分为 **第一层：连接层；第二层：服务层；第三层：引擎层**
 
@@ -32,7 +32,7 @@ MySQL的最上层是连接服务，引入了线程池的概念，允许多台客
 
 ### 1.2 MySQL 工作流程
 
-<img src="https://img-blog.csdnimg.cn/20191215175150258.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9tb3J0eS5ibG9nLmNzZG4ubmV0,size_16,color_FFFFFF,t_70" alt="img" style="zoom: 80%;" />
+<img src="https://img-blog.csdnimg.cn/20191215175150258.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9tb3J0eS5ibG9nLmNzZG4ubmV0,size_16,color_FFFFFF,t_70" alt="image-MySQL工作流程" style="zoom: 80%;" />
 
 **第一层：建立连接** 
 
@@ -76,14 +76,14 @@ MySQL的最上层是连接服务，引入了线程池的概念，允许多台客
 
   * B+ Tree 索引文件和数据文件是分离的**（非聚集索引）**
 
-  <img src="https://github.com/IvanBao97/Notes/blob/main/MySQL/NotePics/MyISAM.png" alt="img" style="zoom:50%;" />
+  <img src="https://github.com/IvanBao97/Notes/blob/main/MySQL/NotePics/MyISAM.png" alt="image-MyISAM" style="zoom:50%;" />
 
-* InnoBD
+* InnoDB
 
   * 表数据文件本身就是按 B+ Tree 组织的一个索引结构文件**（聚集索引）**
   * 叶节点包含了完整的数据记录
 
-  <img src="https://github.com/IvanBao97/Notes/blob/main/MySQL/NotePics/InnoDB.png" alt="img" style="zoom:50%;" />
+  <img src="https://github.com/IvanBao97/Notes/blob/main/MySQL/NotePics/InnoDB.png" alt="image-InnoDB" style="zoom:50%;" />
 
   
 
@@ -246,7 +246,7 @@ ROLLBACK WORK 1 / ROLLBACK WORK 2
   * 链事务只能回滚到前一个事务的结果处，而带有保存点事务可以回滚到任意一个保存点处
   * 链事务的每个事务在执行完 COMMIT 后会释放自己所持有的锁，而带有保存点事务则会一直持有每个阶段的所，直至最终COMMIT
 
-<img src="C:\Users\yifan\AppData\Roaming\Typora\typora-user-images\image-20210905182416059.png" alt="image-20210905182416059" style="zoom:50%;" />
+<img src="https://github.com/IvanBao97/Notes/blob/main/MySQL/NotePics/ChainTransaction.png" alt="image-链事务" style="zoom:50%;" />
 
 
 
@@ -535,7 +535,7 @@ MySQL 的 ALERT TABLE 操作非常影响性能，因为该操作会锁住整个�
     * 所有索引元素无重复
   * 叶节点之间没有指针
 
-  <img src="C:\Users\yifan\AppData\Roaming\Typora\typora-user-images\image-20201015232614820.png" alt="image-20201015232614820" style="zoom:50%;" />
+  <img src="https://github.com/IvanBao97/Notes/blob/main/MySQL/NotePics/BTree.png" alt="image-BTree" style="zoom:50%;" />
 
   
 
@@ -546,7 +546,7 @@ MySQL 的 ALERT TABLE 操作非常影响性能，因为该操作会锁住整个�
   * 叶子节点包含**所有索引字段**
     * 叶子节点用指针连接，提高区间访问性能
 
-  <img src="C:\Users\yifan\AppData\Roaming\Typora\typora-user-images\image-20201015225657380.png" alt="image-20201015225657380" style="zoom:50%;" />
+  <img src="https://github.com/IvanBao97/Notes/blob/main/MySQL/NotePics/B%2BTree.png" alt="image-B+Tree" style="zoom:50%;" />
 
   
 
@@ -555,7 +555,7 @@ MySQL 的 ALERT TABLE 操作非常影响性能，因为该操作会锁住整个�
   * 就单一查询来说，性能优于 B+ Tree
     * 无法进行范围查找，且存在 hash 冲突问题
 
-  <img src="C:\Users\yifan\AppData\Roaming\Typora\typora-user-images\image-20201015230108864.png" alt="image-20201015230108864" style="zoom:50%;" />
+  <img src="https://github.com/IvanBao97/Notes/blob/main/MySQL/NotePics/Hash.png" alt="image-Hash" style="zoom:50%;" />
 
 
 
