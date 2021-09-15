@@ -103,8 +103,8 @@ MySQL的最上层是连接服务，引入了线程池的概念，允许多台客
 * IO Thread
 	* Write Theard 写线程
 	* Read Theard 读线程
-	* Insert buffer Theard 处理 Insert Buffer
-	* Log Theard
+	* Insert buffer Theard 处理插入缓冲线程
+	* Log Theard 日志操作线程
 * Purge Thread
 	* 用来回收事务提交后，不再使用的 undo Log
 * Page Cleaner Theard
@@ -113,11 +113,13 @@ MySQL的最上层是连接服务，引入了线程池的概念，允许多台客
 #### 2.2.2 内存
 * 缓冲池
 	* 作用：通过内存的速度来弥补磁盘速度较慢对数据库性能的影响
-	* 读流程：进行读取页操作时，首先判断该页是否在缓冲池中，若存在，则命中；不存在，则从磁盘读取，并将该页存放在缓冲池中
-	* 写流程：首先修改缓冲池中的页，然后以一定的频率刷新到磁盘上（并不是每次修改都出发刷新，而是通过 CheackPoint 机制刷新回磁盘）
-		* CheackPoint 机制
-			* 事务操作在写之前，会先记录 redo log，当之前的 redo log 过期时，将其记录的操作页刷回磁盘
-			* LRU 淘汰页是脏页时，会触发 CheackPoint，将脏页刷回磁盘
+	* 读流程：
+		* 进行读取页操作时，首先判断该页是否在缓冲池中，若存在，则命中；不存在，则从磁盘读取，并将该页存放在缓冲池中
+	* 写流程：
+		* 首先修改缓冲池中的页，然后以一定的频率刷新到磁盘上（并不是每次修改都出发刷新，而是通过 CheackPoint 机制刷新回磁盘）
+	* CheackPoint 机制
+		* 事务操作在写之前，会先记录 redo log，当之前的 redo log 过期时，将其记录的操作页刷回磁盘
+		* LRU 淘汰页是脏页时，会触发 CheackPoint，将脏页刷回磁盘
 	* 管理方式（Data Page）：
 		* LRU with midPoint
 			* 新访问的页放在 midPoint 而不是首部，防止由于全扫描使一些非热点数据页被插在首部，导致热点数据移除
