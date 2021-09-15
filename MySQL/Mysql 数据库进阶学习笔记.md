@@ -103,20 +103,44 @@ MySQL的最上层是连接服务，引入了线程池的概念，允许多台客
 * IO Thread
 	* Write Theard 写线程
 	* Read Theard 读线程
-	* Insert buffer Theard
+	* Insert buffer Theard 处理 Insert Buffer
 	* Log Theard
 * Purge Thread
 	* 用来回收事务提交后，不再使用的 undo Log
-* Page Clearn Theard
+* Page Cleaner Theard
 	* 将内存缓冲池里的脏页刷新到磁盘文件
 
 #### 2.2.2 内存
 * 缓冲池
 	* 作用：通过内存的速度来弥补磁盘速度较慢对数据库性能的影响
 	* 读流程：进行读取页操作时，首先判断该页是否在缓冲池中，若存在，则命中；不存在，则从磁盘读取，并将该页存放在缓冲池中
-	* 写流程：
+	* 写流程：首先修改缓冲池中的页，然后以一定的频率刷新到磁盘上（并不是每次修改都出发刷新，而是通过 CheackPoint 机制刷新回磁盘）
+		* CheackPoint 机制
+			* 事务操作在写之前，会先记录 redo log，当之前的 redo log 过期时，将其记录的操作页刷回磁盘
+			* LRU 淘汰页是脏页时，会触发 CheackPoint，将脏页刷回磁盘
+	* 管理方式（Data Page）：
+		* LRU with midPoint
+			* 新访问的页放在 midPoint 而不是首部，防止由于全扫描使一些非热点数据页被插在首部，导致热点数据移除
+		* Free List：
+			* 存储空闲页。每当 LRU 需要加入新页时，先查询 Free List ，有空闲页，将新页直接插入 LRU，并删除一个空闲页；没空闲，采用 LRU 淘汰策略删除非热点页
+		* Flush List：
+			* LRU 中的页被修改后，被称为脏页，等待 CheckPoint 机制刷回磁盘。Flush List 存储了所有的脏页，管理脏页的刷新。同时，用户依旧可以在 LRU 中查看修改的页
+	
 
-#### 2.2.3 文件
+#### 2.2.3 关键特性
+* 插入缓冲（Insert Buffer）：
+	* 啊
+* 两次写（Double Write）
+	* 
+* 自适应哈希索引（Adaptive Hash Index）
+	*
+* 异步IO
+	*
+* 刷新临近页
+	*
+
+
+#### 2.2.4 文件
 
 
 <br>
