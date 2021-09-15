@@ -132,14 +132,14 @@ MySQL的最上层是连接服务，引入了线程池的概念，允许多台客
 #### 2.2.3 关键特性
 * 插入缓冲（Insert Buffer）：
 	* 啊
-* 两次写（Double Write）
-	* 
-* 自适应哈希索引（Adaptive Hash Index）
-	*
-* 异步IO
-	*
-* 刷新临近页
-	*
+* 两次写（Double Write）：
+	* 啊
+* 自适应哈希索引（Adaptive Hash Index）：
+	* 啊
+* 异步IO：
+	* 啊
+* 刷新临近页：
+	* 啊
 
 
 #### 2.2.4 文件
