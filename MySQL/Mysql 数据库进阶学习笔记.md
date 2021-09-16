@@ -169,8 +169,9 @@ MySQL的最上层是连接服务，引入了线程池的概念，允许多台客
 		* 每次事务的操作都会被记录到二进制缓存中，当事务提交时，刷到二进制文件中
 
 #### 2.2.5 数据存储结构
+<img src="https://github.com/IvanBao97/Notes/blob/main/MySQL/NotePics/tableStructure.png" alt="image-tableStructure" style="zoom: 67%;" />
 
-
+<img src="https://github.com/IvanBao97/Notes/blob/main/MySQL/NotePics/PageStructure.png" alt="image-pageStructure" style="zoom: 67%;" />
 
 <br>
 
