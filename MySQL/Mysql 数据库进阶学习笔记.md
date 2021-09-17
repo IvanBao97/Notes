@@ -584,33 +584,30 @@ MySQL 的 ALERT TABLE 操作非常影响性能，因为该操作会锁住整个�
 
 * 索引的目的是**提高查询效率**，本质上是一种**排好序**的**数据结构**
 
-  * B Tree
+	* B Tree
 
-    * m 叉 B 树每个节点最多有 m-1 个元素
-    * 所有索引元素无重复
-  * 叶节点之间没有指针
+    		* m 叉 B 树每个节点最多有 m-1 个元素
+    		* 所有索引元素无重复
+  		* 叶节点之间没有指针
 
-  <img src="https://github.com/IvanBao97/Notes/blob/main/MySQL/NotePics/BTree.png" alt="image-BTree" style="zoom:50%;" />
+	<img src="https://github.com/IvanBao97/Notes/blob/main/MySQL/NotePics/BTree.png" alt="image-BTree" style="zoom:50%;" />
 
-  
 
-* B+ Tree (默认)
+	* B+ Tree (默认)
 
-  * m 叉 B+ 树每个节点最多有 m 个元素
-  * 非叶子节点**不存储 Data，只存储索引**，因此可以放更多的索引
-  * 叶子节点包含**所有索引字段**
-    * 叶子节点用指针连接，提高区间访问性能
-
-  <img src="https://github.com/IvanBao97/Notes/blob/main/MySQL/NotePics/B%2BTree.png" alt="image-B+Tree" style="zoom:50%;" />
+  		* m 叉 B+ 树每个节点最多有 m 个元素
+  		* 非叶子节点**不存储 Data，只存储索引**，因此可以放更多的索引
+  		* 叶子节点包含**所有索引字段**
+    		* 叶子节点用指针连接，提高区间访问性能
+ 	<img src="https://github.com/IvanBao97/Notes/blob/main/MySQL/NotePics/B%2BTree.png" alt="image-B+Tree" style="zoom:50%;" />
 
   
 
-  * Hash
-    * 对索引的 key 进行一次 hash 计算就可以定位 Data 存储位置
-  * 就单一查询来说，性能优于 B+ Tree
-    * 无法进行范围查找，且存在 hash 冲突问题
-
-  <img src="https://github.com/IvanBao97/Notes/blob/main/MySQL/NotePics/Hash.png" alt="image-Hash" style="zoom:50%;" />
+  	* Hash
+    		* 对索引的 key 进行一次 hash 计算就可以定位 Data 存储位置
+  		* 就单一查询来说，性能优于 B+ Tree
+    		* 无法进行范围查找，且存在 hash 冲突问题
+     <img src="https://github.com/IvanBao97/Notes/blob/main/MySQL/NotePics/Hash.png" alt="image-Hash" style="zoom:50%;" />
 
 
 
