@@ -1,1 +1,2 @@
-## This repository is created for recording points about MySQL
+# Introduction
+This repository is created for recording notes about MySQL.
