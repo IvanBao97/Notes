@@ -20,7 +20,7 @@
 
 
 
-
+<br>
 
 ## 工厂模式
 
@@ -160,8 +160,8 @@ public class MethodFactoryDemo {
 
 **AbstractFactory 类**：增加 PC 产品制造接口
 
-```
-public interface AbstractFactory2 {
+```java
+public interface AbstractFactory {
     Phone buildPhone();
     PC buildPC();
 }
